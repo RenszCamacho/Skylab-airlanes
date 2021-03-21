@@ -1,28 +1,44 @@
-let flights = [
-  { id: 00, to: "Bilbao", from: "Barcelona", cost: 1600, scale: false },
-  { id: 01, to: "New York", from: "Barcelona", cost: 700, scale: false },
-  { id: 02, to: "Los Angeles", from: "Madrid", cost: 1100, scale: true },
-  { id: 03, to: "Paris", from: "Barcelona", cost: 210, scale: false },
-  { id: 04, to: "Roma", from: "Barcelona", cost: 150, scale: false },
-  { id: 05, to: "London", from: "Madrid", cost: 200, scale: false },
-  { id: 06, to: "Madrid", from: "Barcelona", cost: 90, scale: false },
-  { id: 07, to: "Tokyo", from: "Madrid", cost: 1500, scale: true },
-  { id: 08, to: "Shangai", from: "Barcelona", cost: 800, scale: true },
-  { id: 09, to: "Sydney", from: "Barcelona", cost: 150, scale: true },
+let flights: {
+  id: number;
+  to: string;
+  from: string;
+  cost: number;
+  scale: boolean;
+}[];
+
+flights = [
+  { id: 0, to: "Bilbao", from: "Barcelona", cost: 1600, scale: false },
+  { id: 1, to: "New York", from: "Barcelona", cost: 700, scale: false },
+  { id: 2, to: "Los Angeles", from: "Madrid", cost: 1100, scale: true },
+  { id: 3, to: "Paris", from: "Barcelona", cost: 210, scale: false },
+  { id: 4, to: "Roma", from: "Barcelona", cost: 150, scale: false },
+  { id: 5, to: "London", from: "Madrid", cost: 200, scale: false },
+  { id: 6, to: "Madrid", from: "Barcelona", cost: 90, scale: false },
+  { id: 7, to: "Tokyo", from: "Madrid", cost: 1500, scale: true },
+  { id: 8, to: "Shangai", from: "Barcelona", cost: 800, scale: true },
+  { id: 9, to: "Sydney", from: "Barcelona", cost: 150, scale: true },
   { id: 10, to: "Tel-Aviv", from: "Madrid", cost: 150, scale: false },
 ];
 
-const info = (str) => console.log(`*** ${str} ***`);
+const info = (str: string): void => console.log(`*** ${str} ***`);
 
-const greeting = () => {
+const greeting = (): void => {
   let userName = prompt("Hello, could you please introduce your name.");
   alert(`Hello ${userName}, welcome! You can see the results on the console.`);
-  return console.log(
+  console.log(
     `Hello ${userName}, welcome! You can see all the flights from today.`
   );
 };
 
-const displayingFlights = (arrFlights) => {
+const displayingFlights = (
+  arrFlights: {
+    id: number;
+    to: string;
+    from: string;
+    cost: number;
+    scale: boolean;
+  }[]
+) => {
   info("List of all the flight today");
 
   const display = arrFlights.map((flight) =>
@@ -36,19 +52,27 @@ const displayingFlights = (arrFlights) => {
 
     `
   );
-  return console.log(...display);
+  console.log(...display);
 };
 
-const averagePrices = () => {
+const averagePrices = (): void => {
   info("This the average price for a flight.");
 
   const prices = flights.map((price) => price.cost),
     sumOfPrices = prices.reduce((acc, el) => acc + el, 0),
     averageResult = Math.round(sumOfPrices / prices.length);
-  return console.log(`- The average cost of flights is ${averageResult}€`);
+  console.log(`- The average cost of flights is ${averageResult}€`);
 };
 
-const flightsWithStop = (flights) => {
+const flightsWithStop = (
+  flights: {
+    id: number;
+    to: string;
+    from: string;
+    cost: number;
+    scale: boolean;
+  }[]
+): void => {
   info("List of flights with stop.");
 
   const filterFlightsStop = flights.filter((flight) => flight.scale);
@@ -59,10 +83,18 @@ const flightsWithStop = (flights) => {
 
     `
   );
-  return console.log(...printFlights);
+  console.log(...printFlights);
 };
 
-const lastFlights = (flights) => {
+const lastFlights = (
+  flights: {
+    id: number;
+    to: string;
+    from: string;
+    cost: number;
+    scale: boolean;
+  }[]
+): void => {
   info("List of the last five flights.");
 
   const filterLastFlights = flights.filter(
@@ -77,10 +109,10 @@ const lastFlights = (flights) => {
     `
   );
 
-  return console.log(...printLastFligths);
+  console.log(...printLastFligths);
 };
 
-const runProgram = () => {
+const runProgram = (): void => {
   greeting();
   displayingFlights(flights);
   averagePrices();
